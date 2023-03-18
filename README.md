@@ -34,7 +34,7 @@ You'll receive a JWT token in the response's body
 
 `/api/v1/demo`
 
-You'll get a simple `Hello World!` plain text reponse if you are authenticated.
+You'll get a simple `Hello World!` plain text reponse if you are authenticated, a 403 otherwise.
 To be authenticated you need to have a Bearer token header with the JWT token receive via login or signup.
 
 Example :
