@@ -4,7 +4,6 @@ import com.example.jwtauthentication.config.JwtService;
 import com.example.jwtauthentication.user.Role;
 import com.example.jwtauthentication.user.User;
 import com.example.jwtauthentication.user.UserRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
