@@ -1,2 +1,12 @@
-package com.example.jwtauthentication.config;public class JwtService {
+package com.example.jwtauthentication.config;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class JwtService {
+
+
+    public String extractUsername(String token) {
+        return null;
+    }
 }
