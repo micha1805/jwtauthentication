@@ -17,7 +17,8 @@ import java.io.IOException;
 // To build automatically a constructors with all the private fields declared
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    
+
+    private final JwtService jwtService;
 
     @Override
     protected void doFilterInternal(
@@ -35,6 +36,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             // will ve thrown instead of a NullPointerException further in the code
 
     ) throws ServletException, IOException {
-        // do stuff here
+        // Get the content of the Authorization header in the request :
+        final String authHeader = request.getHeader("Authorization");
+        final String jwt;
+        final String userEmail;
+        // because the full header is like so : "Authorization: Bearer BLABLABLABLA"
+        if(authHeader == null || !authHeader.startsWith("Bearer ")){
+            // The equivalent of "next"  in ExpressJS middleware :
+            filterChain.doFilter(request, response);
+            return; // We just quit the current method
+        }
+        // beginIndex is 7 because "Bearer " is 7 characters long
+        jwt = authHeader.substring(7);
+        // Extract from the JWT, by convention it is Username,
+        // even if in our case we look at the email
+        userEmail = jwtService.extractUsername(jwt);
     }
 }
