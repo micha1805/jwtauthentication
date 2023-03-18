@@ -19,9 +19,9 @@ import java.util.function.Function;
 public class JwtService {
 
 
-    // TODO IMPORTANT : PUT THIS KEY IN A ENV VARIABLE !!!
+    // IMPORTANT : PUT THIS KEY IN A ENV VARIABLE !!!
     // THIS IS JUST FOR DEMO 
-    private static final String SECRET_KEY = "67556B58703273357638792F423F4528472B4B6250655368566D597133743677"
+    private static final String SECRET_KEY = "67556B58703273357638792F423F4528472B4B6250655368566D597133743677";
 
 
     public String extractUsername(String token) {
@@ -78,6 +78,6 @@ public class JwtService {
 
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
-        return Keys.hmacShaKeyFor(keyBytes)
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }
