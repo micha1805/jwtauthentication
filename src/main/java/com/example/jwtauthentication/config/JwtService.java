@@ -62,7 +62,7 @@ public class JwtService {
     }
 
     private Date extractExpiration(String token) {
-        return extracClaim(token, Claims::getExpiration)
+        return extracClaim(token, Claims::getExpiration);
     }
 
 
