@@ -26,11 +26,11 @@ public class JwtService {
 
     public String extractUsername(String token) {
         // Subject is email or username of the user,
-        return extracClaim(token, Claims::getSubject);
+        return extractClaim(token, Claims::getSubject);
     }
 
-    public <T> T extracClaim(String token, Function<Claims, T> claimsResolver){
-        final Claims claims = extracAllClaims(token);
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
+        final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
@@ -62,12 +62,12 @@ public class JwtService {
     }
 
     private Date extractExpiration(String token) {
-        return extracClaim(token, Claims::getExpiration);
+        return extractClaim(token, Claims::getExpiration);
     }
 
 
     // extract the payload of the jwt, the claims :
-    private Claims extracAllClaims(String token){
+    private Claims extractAllClaims(String token){
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSigningKey())
